@@ -5,4 +5,7 @@ if (process.env.NODE_ENV !== "production") {
 
 module.exports = {
   PORT: process.env.PORT,
+  DATABASE: process.env.DATABASE,
+  USER: process.env.USER,
+  PASSWORD: process.env.PASSWORD,
 };
