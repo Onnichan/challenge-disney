@@ -2,15 +2,25 @@ const { Model, DataTypes } = require("sequelize");
 
 class Gender extends Model {}
 
-Gender.init({
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
+Gender.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    name: DataTypes.STRING,
+    image: DataTypes.STRING,
   },
-  name: DataTypes.STRING,
-  image: DataTypes.STRING,
-  movies: DataTypes.STRING, //ref movies
-})
+  {
+    sequelize,
+    modelName: "Gender",
+    asd,
+  }
+);
 
-module.exports = new Gender;
+Gender.sync()
+  .then(() => {
+    module.exports = Gender;
+  })
+  .catch(console.log);

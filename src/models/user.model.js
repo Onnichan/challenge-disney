@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Character extends Model {}
+class User extends Model {}
 
-Character.init(
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,31 +13,35 @@ Character.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    age: {
-      type: DataTypes.NUMBER,
-      allowNull: false,
-    },
-    weight: {
-      type: DataTypes.NUMBER,
-      allowNull: false,
-    },
-    image: {
+    lastname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    history: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        is: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+      },
+    }
   },
   {
     sequelize,
-    modelName: "Character",
+    modelName: "User",
   }
 );
 
-Character.sync()
+
+User.sync()
   .then(() => {
-    module.exports = Character;
+    module.exports = User;
   })
   .catch(console.log);
