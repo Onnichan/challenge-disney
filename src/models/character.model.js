@@ -36,8 +36,4 @@ Character.init(
   }
 );
 
-Character.sync()
-  .then(() => {
-    module.exports = Character;
-  })
-  .catch(console.log);
+module.exports = Character;

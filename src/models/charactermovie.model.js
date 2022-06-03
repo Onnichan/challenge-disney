@@ -34,8 +34,4 @@ CharacterMovie.init(
 Movie.belongsToMany(Movie, { through: CharacterMovie });
 Character.belongsToMany(Character, { through: CharacterMovie });
 
-CharacterMovie.sync()
-  .then(() => {
-    module.exports = CharacterMovie;
-  })
-  .catch(console.log);
+module.exports = CharacterMovie;

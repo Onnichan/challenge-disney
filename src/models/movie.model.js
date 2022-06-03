@@ -20,8 +20,4 @@ Movie.init(
   }
 );
 
-Movie.sync()
-  .then(() => {
-    module.exports = Movie;
-  })
-  .catch(console.log);
+module.exports = Movie;

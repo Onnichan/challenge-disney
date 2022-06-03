@@ -19,8 +19,4 @@ Gender.init(
   }
 );
 
-Gender.sync()
-  .then(() => {
-    module.exports = Gender;
-  })
-  .catch(console.log);
+module.exports = Gender;

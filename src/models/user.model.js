@@ -1,6 +1,12 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes} = require("sequelize");
+const sequelize = require("../config/connection");
+const bcrypt = require("bcryptjs");
 
-class User extends Model {}
+class User extends Model {
+  comparePassword = password => {
+    return bcrypt.compareSync(password, this.password);
+  };
+}
 
 User.init(
   {
@@ -31,17 +37,25 @@ User.init(
       validate: {
         is: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
       },
-    }
+    },
   },
   {
     sequelize,
+    hooks: {
+      beforeSave: user => {
+        if (user.password) {
+          const salt = bcrypt.genSaltSync(10, "a");
+          user.password = bcrypt.hashSync(user.password, salt);
+        }
+      },
+    },
     modelName: "User",
   }
 );
+console.log('usermodel',User);
 
-
-User.sync()
-  .then(() => {
+// User.sync()
+//   .then(() => {
     module.exports = User;
-  })
-  .catch(console.log);
+  // })
+  // .catch(console.log);

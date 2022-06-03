@@ -8,4 +8,7 @@ module.exports = {
   DATABASE: process.env.DATABASE,
   USER: process.env.USER,
   PASSWORD: process.env.PASSWORD,
+  CACHE_DEV: process.env.CACHE_DEV,
+  JWT_SECRET: process.env.JWT_SECRET,
+  SWAGGER_DOC: process.env.SWAGGER_DOC,
 };

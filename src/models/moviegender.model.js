@@ -29,8 +29,4 @@ MovieGender.init({
 Movie.belongsToMany(Movie, { through: MovieGender });
 Gender.belongsToMany(Gender, { through: MovieGender });
 
-MovieGender.sync()
-  .then(() => {
-    module.exports = MovieGender;
-  })
-  .catch(console.log);
+module.exports = MovieGender;
