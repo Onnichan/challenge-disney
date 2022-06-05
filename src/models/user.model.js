@@ -1,9 +1,9 @@
-const { Model, DataTypes} = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcryptjs");
 
 class User extends Model {
-  comparePassword = password => {
+  comparePassword = (password) => {
     return bcrypt.compareSync(password, this.password);
   };
 }
@@ -42,7 +42,7 @@ User.init(
   {
     sequelize,
     hooks: {
-      beforeSave: user => {
+      beforeSave: (user) => {
         if (user.password) {
           const salt = bcrypt.genSaltSync(10, "a");
           user.password = bcrypt.hashSync(user.password, salt);
@@ -52,10 +52,10 @@ User.init(
     modelName: "User",
   }
 );
-console.log('usermodel',User);
+console.log("usermodel", User);
 
 // User.sync()
 //   .then(() => {
-    module.exports = User;
-  // })
-  // .catch(console.log);
+module.exports = User;
+// })
+// .catch(console.log);

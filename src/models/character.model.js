@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Character extends Model {}
 
@@ -14,11 +15,11 @@ Character.init(
       allowNull: false,
     },
     age: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     weight: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     image: {
@@ -28,7 +29,7 @@ Character.init(
     history: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
+    }
   },
   {
     sequelize,

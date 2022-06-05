@@ -4,7 +4,6 @@ class AuthController {
 
   async register(req, res){
     const {body} = req;
-    // console.log(body);
     const createdUser = await AuthService.register(body);
     return res.status(201).send(createdUser);
   }

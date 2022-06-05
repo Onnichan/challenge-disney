@@ -3,7 +3,7 @@ const UserRepository = require("../repositories/user.repository");
 
 class UserService {
   async create(entity) {
-    console.log('creating');
+    console.log("creating");
     return await UserRepository.create(entity);
   }
 
