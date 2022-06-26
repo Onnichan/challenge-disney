@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../config/connection')
 
 class Character extends Model {}
 
@@ -29,12 +29,12 @@ Character.init(
     history: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
   },
   {
     sequelize,
-    modelName: "Character",
+    modelName: 'Character',
   }
-);
+)
 
-module.exports = Character;
+module.exports = Character

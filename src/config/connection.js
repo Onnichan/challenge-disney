@@ -1,8 +1,8 @@
-const { Sequelize } = require("sequelize");
-const { DATABASE, PASSWORD, USER } = require(".");
+const { Sequelize } = require('sequelize')
+const { DATABASE, PASSWORD, USER } = require('.')
 
 const sequelize = new Sequelize(DATABASE, USER, PASSWORD, {
-  dialect: "mysql",
-});
+  dialect: 'mysql',
+})
 
-module.exports = sequelize;
+module.exports = sequelize

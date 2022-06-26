@@ -1,11 +1,9 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
-const bcrypt = require("bcryptjs");
+const { Model, DataTypes } = require('sequelize')
+const bcrypt = require('bcryptjs')
+const sequelize = require('../config/connection')
 
 class User extends Model {
-  comparePassword = (password) => {
-    return bcrypt.compareSync(password, this.password);
-  };
+  comparePassword = (password) => bcrypt.compareSync(password, this.password)
 }
 
 User.init(
@@ -44,18 +42,15 @@ User.init(
     hooks: {
       beforeSave: (user) => {
         if (user.password) {
-          const salt = bcrypt.genSaltSync(10, "a");
-          user.password = bcrypt.hashSync(user.password, salt);
+          const salt = bcrypt.genSaltSync(10, 'a')
+          // eslint-disable-next-line no-param-reassign
+          user.password = bcrypt.hashSync(user.password, salt)
         }
       },
     },
-    modelName: "User",
+    modelName: 'User',
   }
-);
-console.log("usermodel", User);
+)
+console.log('usermodel', User)
 
-// User.sync()
-//   .then(() => {
-module.exports = User;
-// })
-// .catch(console.log);
+module.exports = User

@@ -1,13 +1,15 @@
-const UserModel = require("../models/user.model");
+const { UserModel } = require('../models')
 
 class UserRepository {
   async create(entity) {
-    return await UserModel.create(entity);
+    const create = await UserModel.create(entity)
+    return create
   }
 
   async getUserByEmail(email) {
-    return await UserModel.findOne({ where: { email: email } });
+    const findOne = await UserModel.findOne({ where: { email } })
+    return findOne
   }
 }
 
-module.exports = new UserRepository();
+module.exports = new UserRepository()

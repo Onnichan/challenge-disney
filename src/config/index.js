@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
-  const path = require("path").join(__dirname, "..", "..", ".env");
-  require("dotenv").config({ path });
+if (process.env.NODE_ENV !== 'production') {
+  const path = require('path').join(__dirname, '..', '..', '.env')
+  require('dotenv').config({ path })
 }
 
 module.exports = {
@@ -11,4 +11,4 @@ module.exports = {
   CACHE_DEV: process.env.CACHE_DEV,
   JWT_SECRET: process.env.JWT_SECRET,
   SWAGGER_DOC: process.env.SWAGGER_DOC,
-};
+}

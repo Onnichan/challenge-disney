@@ -1,27 +1,33 @@
-const CharacterModel = require("../models/character.model");
+const { CharacterModel } = require('../models')
 
 class CharacterRepository {
   async getAll() {
-    return await CharacterModel.findAll({
-      attributes: ["name", "image"],
-    });
+    const findAll = await CharacterModel.findAll({
+      attributes: ['name', 'image'],
+    })
+    return findAll
   }
 
   async create(entity) {
-    return await CharacterModel.create(entity);
+    const create = await CharacterModel.create(entity)
+    return create
   }
 
   async update(id, body) {
-    return await CharacterModel.update(body, { where: { id: id } });
+    const update = await CharacterModel.update(body, { where: { id } })
+    return update
   }
 
   async delete(id) {
-    return await CharacterModel.destroy({ where: { id: id } });
+    const destroy = await CharacterModel.destroy({ where: { id } })
+    return destroy
   }
 
-  async findByName(name) {
-    return await CharacterModel.findOne({ where: { name: name } });
+  async findByField(field) {
+    const findOne = await CharacterModel.findOne({ where: field })
+    console.log('field', findOne)
+    return findOne
   }
 }
 
-module.exports = new CharacterRepository();
+module.exports = new CharacterRepository()
